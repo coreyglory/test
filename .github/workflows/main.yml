@@ -2,4 +2,18 @@ name: testservice
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+  
+    runs_on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Print test code to the console
+      run: echo 'Jesus Is Lord of All!'
     
