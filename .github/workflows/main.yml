@@ -28,7 +28,7 @@ jobs:
         username: ${{ vars.AZURE_CLIENT_ID }}
         password: ${{ secrets.AZURE_CLIENT_SECRET }}
       
-    - name: List containers in ACR
-      run: az acr list -g test -o table
+    # - name: List containers in ACR
+    #   run: az acr list -g test -o table
   
 
