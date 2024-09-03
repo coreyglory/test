@@ -7,18 +7,18 @@ on:
   pull_request:
     branches:
     - main
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ vars.ENVIRONMENT_VAR}}
     steps:
     - name: Print test code to the console
       uses: actions/checkout@v4
       
     - name: List Environment Variables
       run: |
-        echo "AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}"
+        echo "AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}"
         echo "AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}"
       
     - name: Login to ACR
