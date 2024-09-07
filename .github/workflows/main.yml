@@ -23,17 +23,18 @@ jobs:
 
     - name: Log into Azure
       run: |
-        login=$(az login --service-principal -u ${{ vars.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} -t 6b902c69-e591-4cfb-a7a7-8fa0efbbea01)
-        echo $login
+        output=$(az login --service-principal -u ${{ vars.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} -t 6b902c69-e591-4cfb-a7a7-8fa0efbbea01)
+        echo $output
 
     # - name: Login to Azure
     #   uses: azure/login@v1
     #   with:
     #     creds: ${{ secrets.CREDS }}
 
-    # - name: Log in to ACR
-    #   run: |
-    #     az acr login --name milrainregistry --username ${{ vars.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+    - name: Log into to ACR
+      run: |
+        output=$(az acr login --name milrainregistry)
+        echo $output
 
     # - name: Login to ACR
     #   uses: docker/login-action@v3
