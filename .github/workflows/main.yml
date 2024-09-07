@@ -32,6 +32,8 @@ jobs:
         echo $output
 
     - name: List containers in ACR
-      run: az acr list -g test -o table
+      run: |
+        output = $(az acr list -g test -o table)
+        echo $output
   
 
