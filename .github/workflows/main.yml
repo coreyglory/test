@@ -23,7 +23,8 @@ jobs:
 
     - name: Log into Azure
       run: |
-        echo "azure login -u ${{ vars.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}"
+        login=$(az login -u ${{ vars.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }})
+        echo $login
 
     # - name: Login to Azure
     #   uses: azure/login@v1
