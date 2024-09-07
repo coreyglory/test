@@ -21,21 +21,25 @@ jobs:
         echo "AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}"
         echo "AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}"
 
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.CREDS }}
-
-    - name: Log in to ACR
+    - name: Log into Azure
       run: |
-        az acr login --name milrainregistry --username ${{ vars.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+        echo "azure login -u ${{ vars.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}"
 
-    - name: Login to ACR
-      uses: docker/login-action@v3
-      with:
-        registry: milrainregistry.azurecr.io
-        username: ${{ vars.AZURE_CLIENT_ID }}
-        password: ${{ secrets.AZURE_CLIENT_SECRET }}
+    # - name: Login to Azure
+    #   uses: azure/login@v1
+    #   with:
+    #     creds: ${{ secrets.CREDS }}
+
+    # - name: Log in to ACR
+    #   run: |
+    #     az acr login --name milrainregistry --username ${{ vars.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
+
+    # - name: Login to ACR
+    #   uses: docker/login-action@v3
+    #   with:
+    #     registry: milrainregistry.azurecr.io
+    #     username: ${{ vars.AZURE_CLIENT_ID }}
+    #     password: ${{ secrets.AZURE_CLIENT_SECRET }}
       
     # - name: List containers in ACR
     #   run: az acr list -g test -o table
